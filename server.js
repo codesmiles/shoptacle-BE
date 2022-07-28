@@ -1,5 +1,10 @@
 const express = require('express');
 const app = express();
+const authRoute = require("./route/authRoute");
+
+app.use('/api', authRoute);
+
+
 
 
 
