@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const tokenSchema = new Schema({
   _id: { type: String, required: true, default: uuidv4().split("-").join("") },
-  emailAddress: {
+  email: {
     type: String,
     trim: true,
     lowercase: true,

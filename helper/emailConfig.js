@@ -1,6 +1,7 @@
-const nodemailer = require(`nodemailer`);
+const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
+
 
 const createTransporter = async () => {
   const oauth2Client = new OAuth2(
@@ -38,8 +39,6 @@ const createTransporter = async () => {
   });
   return transporter;
 };
-
-
 
 module.exports = { createTransporter };
 
