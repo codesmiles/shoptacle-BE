@@ -42,3 +42,17 @@ const createTransporter = async () => {
 
 
 module.exports = { createTransporter };
+
+// SEND EMAIL TO USER
+// const sendEmail = async (emailOptions) => {
+//     let emailTransporter = await createTransporter();
+//     await emailTransporter.sendMail(emailOptions);
+//   };
+
+
+//   sendEmail({
+//     subject: `Token verification for password reset`,
+//     text: `Your email link is ${link}`,
+//     to: "foreign email Address",
+//     from: process.env.EMAIL,
+//   });
