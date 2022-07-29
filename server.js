@@ -2,7 +2,8 @@
 require("dotenv").config();
 const express = require('express');
 const authRoute = require("./route/authRoute");
-const mongoose = require("mongoose"); //import mongoose
+const mongoose = require("mongoose"); 
+const url = `mongodb://localhost:27017/shoptacleDB`;
 
 const app = express();
 
@@ -11,7 +12,6 @@ app.use(express.json());
 app.use('/api', authRoute);
 
 
-const url = `mongodb://localhost:27017/shoptacleDB`;
 
 // connect to mongoose
 mongoose.connect(url, function (err) {
@@ -21,12 +21,7 @@ mongoose.connect(url, function (err) {
     console.log(`Connected to MongoDB`);
   }
 });
-
-
-
-
-
-
-app.listen(3000, () => {
-    console.log(`Server is running on port ${3000}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 })

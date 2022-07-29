@@ -36,6 +36,7 @@ const userSchema = new Schema(
     },
     gender: {
       type: String,
+      lowercase:true,
       required: true,
       enum: ["male", "female"],
       trim: true,
@@ -50,13 +51,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
       trim: true,
-      minlength: 6,
-      maxlength: 50,
+      minlength: 6
     },
     signForNewsLetter: {
       type: Boolean,
       required: true,
-      default: false,
+      default: true,
     },
     isLoggedIn: {
       type: Boolean,
@@ -69,5 +69,5 @@ const userSchema = new Schema(
   }
 );
 
-const SignUp = mongoose.model("SignUp", userSchema);
-module.exports = SignUp;
+const user = mongoose.model("user", userSchema);
+module.exports = user;
