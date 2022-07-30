@@ -1,8 +1,7 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const {mongoose} = require("../config/mongooseConfig");
 const { v4: uuidv4 } = require("uuid");
 
-const tokenSchema = new Schema({
+const tokenSchema = new mongoose.Schema({
   _id: { type: String, required: true, default: uuidv4().split("-").join("") },
   email: {
     type: String,

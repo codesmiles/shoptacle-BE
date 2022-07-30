@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const {Schema } = mongoose;
+const {mongoose} = require("../config/mongooseConfig");
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -11,7 +10,7 @@ const validateEmail = function (email) {
 
 
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
   {
     _id: {
       type: String,

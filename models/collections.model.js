@@ -1,7 +1,7 @@
-const { Schema } = require("mongoose");
+const {mongoose} = require("../config/mongooseConfig");
 const { uuid } = require("uuidv4");
 
-const clothesCollectionSchema = new Schema({
+const clothesCollectionSchema = new mongoose.Schema({
   collectionCategory:{
     required: true,
     type:String,

@@ -6,6 +6,8 @@ const hashPasswordMiddleware = async (req, res, next) => {
   if (password) {
     const salt = await bcrypt.genSalt(10);    
     password = await bcrypt.hash(password, salt);
+
+    
   }
   next();
 };
