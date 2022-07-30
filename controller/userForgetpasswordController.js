@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
-const User = require("../model/user.model");
+const User = require("../models/user.model");
 const validator = require("validator");
 const { createTransporter } = require("../helper/emailConfig");
-const Token = require("../model/token.model");
+const Token = require("../models/token.model");
 const { v4: uuidv4 } = require("uuid");
 
 // uuidv4().split("-").join("");
@@ -18,12 +18,8 @@ const sendEmail = async (emailOptions) => {
   await emailTransporter.sendMail(emailOptions);
 };
 
-// const hashPassword = async (password) => {
-//   const salt = await bcrypt.genSalt(10);
-//   pwd = await bcrypt.hash(password, salt);
-//   console.log(pwd);
-// }
-// hashPassword(uuidv4().split("-").join(""));
+//  to get the directory name
+// console.log(`dirname: ${__dirname} and filename: ${__filename}`);
 
 module.exports.forgetPassword = async (req, res) => {
   const { email } = await req.body;
@@ -46,7 +42,7 @@ module.exports.forgetPassword = async (req, res) => {
         sendEmail({
           subject: `verification link for password reset`,
           text: `Your verification link is http://localhost:3000/${email}/${process.env.LINK}/${token}`,
-          to: process.env.FOREIGN_EMAIL,
+          to: process.env.FOREIGN_EMAIL, //change to email
           from: process.env.EMAIL,
         });
 
@@ -59,7 +55,7 @@ module.exports.forgetPassword = async (req, res) => {
         sendEmail({
           subject: `verification link for password reset`,
           text: `Your verification link is http://localhost:3000/${email}/${process.env.LINK}/${token}`,
-          to: process.env.FOREIGN_EMAIL,
+          to: process.env.FOREIGN_EMAIL, //change later
           from: process.env.EMAIL,
         });
 
