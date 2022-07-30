@@ -11,5 +11,5 @@ const checkUser = require("../middleware/isLoggedIn"); //check if user is logged
 router.post("/sign-up", userSignUpController.signUp);//sign up a new user
 router.post("/sign-in", userSignIncontroller.login);//login a user
 router.post("/forget-password", userForgotPasswordController.forgetPassword);//forgot password
-router.post("/reset-password/:token", userResetPasswordController.resetPassword);//reset password
+router.post("/:email/reset-password/:token", userResetPasswordController.resetPassword);//reset password
 module.exports = router;

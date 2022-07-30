@@ -1,9 +1,11 @@
 module.exports.resetPassword = async (req, res) => {
     
     let token  = await req.params.token;
+    let email = await req.params.email;
     let { password } = await req.body;
     
     // decrypt the token by bcrypt compareSync
+    const paramsMatch = bcrypt.compareSync(token, );
     // compare with the token db
     // set a timer to deactivate the token after 1 hour
     // if match, update the password

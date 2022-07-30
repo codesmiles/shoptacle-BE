@@ -31,22 +31,23 @@ module.exports.forgetPassword = async (req, res) => {
     // check if email exist in db
     const user = await User.findOne({ email });
     if (user) {
-
       const checkTokenEmail = await Token.findOne({ email }).exec();
-      
+
       // generate token and send email
+      const token = uuidv4().split("-").join("");
+      // hash token
       const salt = await bcrypt.genSalt(10);
-      const token = await bcrypt.hash(uuidv4().split("-").join(""), salt);
+      const hash = await bcrypt.hash(token, salt);
 
       if (checkTokenEmail) {
         // update token
-          await Token.updateOne({ email }, { token });
-      
+        await Token.updateOne({ email }, { token: hash });
+
         sendEmail({
           subject: `verification link for password reset`,
-          text: `Your verification link is ${process.env.LINK}/${token}`,
+          text: `Your verification link is http://localhost:3000/${email}/${process.env.LINK}/${token}`,
           to: process.env.FOREIGN_EMAIL,
-          from: process.env.EMAIL
+          from: process.env.EMAIL,
         });
 
         return res.json({
@@ -54,31 +55,29 @@ module.exports.forgetPassword = async (req, res) => {
           message: `successfully sent an email to ${email}`,
         });
       } else {
-        const newToken = await new Token({ email, token }).save();
+        await new Token({ email, token:hash }).save();
         sendEmail({
           subject: `verification link for password reset`,
-          text: `Your verification link is ${process.env.LINK}/${token}`,
+          text: `Your verification link is http://localhost:3000/${email}/${process.env.LINK}/${token}`,
           to: process.env.FOREIGN_EMAIL,
-          from: process.env.EMAIL
+          from: process.env.EMAIL,
         });
 
         return res.json({
           successful: true,
-          message: `successfully sent an email to ${email}`
+          message: `successfully sent an email to ${email}`,
         });
       }
     } else {
       res.json({
         successful: false,
-        message: `Email has been sent`
+        message: `Email has been sent`,
       });
     }
   } else {
     res.json({
       successful: false,
-      message: `Email is not valid`
+      message: `Email is not valid`,
     });
   }
 };
-
-
