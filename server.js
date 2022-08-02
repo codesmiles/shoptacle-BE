@@ -9,11 +9,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/user", userRoute);
-app.use("/api/pay",paymentRoute);
+app.use("/api/pay", paymentRoute);
 // STRIPE
 // var stripe = require('stripe')('Your_Secret_Key');
 
-
+// PAYSTACK
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
