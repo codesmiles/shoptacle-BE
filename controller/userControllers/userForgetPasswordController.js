@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
-const User = require("../models/user.model");
+const User = require("../../models/user.model");
 const validator = require("validator");
-const { createTransporter } = require("../config/emailConfig");
-const Token = require("../models/token.model");
+const { createTransporter } = require("../../config/emailConfig");
+const Token = require("../../models/token.model");
 const { v4: uuidv4 } = require("uuid");
 
 

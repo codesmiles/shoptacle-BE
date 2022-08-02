@@ -1,5 +1,5 @@
-const User = require("../models/user.model");
-const Token = require("../models/token.model");
+const User = require("../../models/user.model");
+const Token = require("../../models/token.model");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 
