@@ -5,6 +5,9 @@ const paystackController = require("../controller/paymentControllers/paystackCon
 // FLUTTERWAVE
 
 router.post("/flutterwave",flutterwaveController.flutterwavePay);//not working yet
+
+// PAYSTACK
 router.post("/paystack/transaction/initialize",paystackController.initialize)
+router.get("/paystack/transaction/verify/:reference",paystackController.verify)
 
 module.exports = router;
