@@ -1,0 +1,49 @@
+POST http://localhost:3000/api/user/sign-up
+Content-Type: application/json
+
+{
+  "password": "12345",
+  "fullName":"john doe", 
+  "email":"mike@gmail.com",
+  "password":"Abc123456#",
+  "gender":"male",
+  "stateOfResidence":"Abuja",
+  "signForNewsLetter":"false"
+}
+
+###
+POST http://localhost:3000/api/user/sign-in
+Content-Type: application/json
+
+{
+  "email":"mike@gmail.com",
+  "password":"Abc123456#"
+}
+
+###
+POST http://localhost:3000/api/user/forget-password
+Content-Type: application/json
+
+{
+  "email":"mike@gmail.com"
+}
+
+###
+POST http://localhost:3000/api/user/mike@gmail.com/reset-password/a707c8df9c0c47a7a8621474a6f461c6
+Content-Type: application/json
+
+{
+  "password":"Abc123456#"
+}
+
+###
+POST http://localhost:3000/api/pay/paystack/transaction/initialize
+Content-Type: application/json
+
+{
+  "email":"mike@gmail.com",
+  "amount":"20000"
+}
+
+###
+GET http://localhost:3000/api/pay/paystack/transaction/verify/z3gvmjy5e0
