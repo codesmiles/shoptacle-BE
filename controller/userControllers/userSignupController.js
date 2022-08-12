@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
+const validator = require("validator");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/user.model");
-const validator = require("validator");
+
 
 const errorDey = (err) => {
   if (err) {
